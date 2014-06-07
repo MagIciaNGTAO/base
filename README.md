@@ -1,0 +1,4 @@
+base
+====
+
+Base Project POM
