@@ -31,7 +31,7 @@
         <logback.version>1.0.13</logback.version>
         <log4j.version>1.2.17</log4j.version>
         <jansi.version>1.11</jansi.version>
-        <hk2.version>2.3.0-b05</hk2.version>
+        <hk2.version>2.3.0-b07</hk2.version>
         <guava.version>16.0.1</guava.version>
         <jsr305.version>2.0.3</jsr305.version>
         
@@ -276,7 +276,7 @@
                         <targetTests>
                             <param>${meta.package}*</param>
                         </targetTests>
-                        <verbose>true</verbose>
+                        <exportLineCoverage>true</exportLineCoverage>
                     </configuration>
                 </plugin>
             </plugins>
