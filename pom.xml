@@ -295,6 +295,7 @@
             </plugin>
         </plugins>
     </reporting>
+    
     <!--
     <repositories>
         <repository>
