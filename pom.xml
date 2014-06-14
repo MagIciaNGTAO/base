@@ -277,6 +277,10 @@
                             <param>${meta.package}*</param>
                         </targetTests>
                         <exportLineCoverage>true</exportLineCoverage>
+                        <outputFormats>
+                             <outputFormat>HTML</outputFormat>
+                             <outputFormat>XML</outputFormat>
+                        </outputFormats>
                     </configuration>
                 </plugin>
             </plugins>
