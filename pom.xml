@@ -35,7 +35,8 @@
         <hk2.version>2.3.0-b09</hk2.version>
         <guava.version>16.0.1</guava.version>
         <jsr305.version>2.0.3</jsr305.version>
-        
+        <checkerframework.version>1.8.3</checkerframework.version>
+
         <!-- Plugins -->
         <plugin.compile>3.1</plugin.compile>
         <plugin.surefire>2.17</plugin.surefire>
@@ -45,6 +46,7 @@
         <plugin.checkstyle>2.12</plugin.checkstyle>
         <plugin.jacoco>0.7.1.201405082137</plugin.jacoco>
         <plugin.pit>1.0.0</plugin.pit>
+        <plugin.checkerframework>1.8.2</plugin.checkerframework>
     </properties>
     
     <inceptionYear>2014</inceptionYear>
@@ -91,7 +93,6 @@
     
     <dependencyManagement>
         <dependencies>
-            <!-- Logging -->
             <dependency>
                 <groupId>org.slf4j</groupId>
                 <artifactId>slf4j-api</artifactId>
@@ -103,6 +104,11 @@
                 <version>${hk2.version}</version>
             </dependency>
             <dependency>
+                <groupId>org.checkerframework</groupId>
+                <artifactId>checker-qual</artifactId>
+                <version>${checkerframework.version}</version>
+            </dependency>
+            <dependency>
                 <groupId>org.testng</groupId>
                 <artifactId>testng</artifactId>
                 <version>${testng.version}</version>
@@ -112,10 +118,13 @@
     </dependencyManagement>
     
     <dependencies>
-        <!-- Logging -->
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.checkerframework</groupId>
+            <artifactId>checker-qual</artifactId>
         </dependency>
         <dependency>
             <groupId>org.glassfish.hk2</groupId>
@@ -181,6 +190,27 @@
                         <compilerArgs>
                             <arg>-parameters</arg>
                         </compilerArgs>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.checkerframework</groupId>
+                    <artifactId>checkerframework-maven-plugin</artifactId>
+                    <version>${plugin.checkerframework}</version>
+                    <executions>
+                        <execution>
+                            <phase>process-classes</phase>
+                            <goals>
+                                <goal>check</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                    <configuration>
+                        <processors>
+                            <processor>org.checkerframework.checker.nullness.NullnessChecker</processor>
+                            <processor>org.checkerframework.checker.interning.InterningChecker</processor>
+                            <processor>org.checkerframework.checker.formatter.FormatterChecker</processor>
+                            <processor>org.checkerframework.checker.igj.IGJChecker</processor>
+                        </processors>
                     </configuration>
                 </plugin>
                 <plugin>
