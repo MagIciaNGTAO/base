@@ -52,7 +52,7 @@
     <inceptionYear>2014</inceptionYear>
     
     <organization>
-        <name>Fitbur</name>
+        <name>Fitbur, Inc.</name>
         <url>http://www.github.com/FitburIO</url>
     </organization>
     
@@ -125,7 +125,7 @@
         <dependency>
             <groupId>org.checkerframework</groupId>
             <artifactId>checker-qual</artifactId>
-        </dependency>
+        </dependency> 
         <dependency>
             <groupId>org.glassfish.hk2</groupId>
             <artifactId>hk2-api</artifactId>
@@ -176,6 +176,16 @@
                                         <property>project.build.sourceEncoding</property>
                                         <regex>${project.build.sourceEncoding}</regex>
                                     </requireProperty>
+                                    <bannedDependencies>
+                                        <excludes>
+                                            <exclude>log4j:log4j</exclude>
+                                            <exclude>commons-logging:commons-logging</exclude>
+                                            <exclude>junit:junit</exclude>
+                                            <exclude>org.slf4j:slf4j-log4j12</exclude>
+                                            <exclude>org.slf4j:slf4j-jcl</exclude>
+                                            <exclude>org.slf4j:slf4j-jdk14</exclude>
+                                        </excludes>
+                                    </bannedDependencies>
                                 </rules>
                             </configuration>
                         </execution>
